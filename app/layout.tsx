@@ -1,4 +1,6 @@
 import VoiceNavigationComponent from '@/components/voice'
+import {AIVoiceInput} from '@/components/ui/ai-voice-input'
+import {ExpandableChatDemo} from '@/components/sidechatbot'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -16,10 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}
-      <div className="fixed bottom-5 right-5 z-50">
-        <VoiceNavigationComponent />
-      </div>
+      <body className={inter.className}>
+        {children}
+        <div className="fixed top-2 right-5 z-50">
+          <AIVoiceInput />
+        </div>
+        <div className="fixed bottom-2 right-5 z-50">
+          <ExpandableChatDemo />
+        </div>
       </body>
     </html>
   )
