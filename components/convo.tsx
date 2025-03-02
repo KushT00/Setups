@@ -3,7 +3,7 @@
 
 import React, { useCallback, useState, useEffect } from 'react';
 import { useConversation } from '@11labs/react';
-import { Mic, MicOff, Volume2, VolumeX, ChevronUp, ChevronDown, RotateCcw } from 'lucide-react';
+import { Mic, MicOff, Volume2, VolumeX, ChevronUp, ChevronDown } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -128,12 +128,12 @@ export function Conversation() {
           <CardTitle className="flex items-center justify-between text-lg md:text-xl">
             <div className="flex items-center space-x-2">
               <span className="font-medium">Voice Assistant</span>
-              <Badge variant="outline" className="text-xs font-normal capitalize bg-gray-50">
+              <Badge variant="outline" className="text-xs font-normal m-1 capitalize bg-gray-50">
                 {conversation.status}
               </Badge>
             </div>
             <div 
-              className={`w-3 h-3 rounded-full ${getStatusColor()} relative`}
+              className={`w-4 h-3 rounded-full  ${getStatusColor()} relative`}
               style={{
                 boxShadow: `0 0 10px ${getStatusColor().replace('bg-', '')}`
               }}
