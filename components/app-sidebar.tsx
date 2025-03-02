@@ -67,6 +67,10 @@ const data = {
           title: "profile",
           url: "profile",
         },
+        {
+          title: "files",
+          url: "files",
+        },
       ],
     },
     {
