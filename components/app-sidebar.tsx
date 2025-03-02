@@ -79,15 +79,15 @@ const data = {
       items: [
         {
           title: "Madhav",
-          url: "madhav",
+          url: "/dashboard/madhav",
         },
         {
           title: "meet",
-          url: "meet",
+          url: "/dashboard/meet",
         },
         {
           title: "kush",
-          url: "kush",
+          url: "/dashboard/kush",
         },
       ],
     },
@@ -138,7 +138,6 @@ const data = {
       ],
     },
   ],
-  
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
