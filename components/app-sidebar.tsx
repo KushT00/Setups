@@ -6,16 +6,12 @@ import {
   BookOpen,
   Bot,
   Command,
-  Frame,
   GalleryVerticalEnd,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
 import { NavUser } from "@/components/nav-user"
 import { TeamSwitcher } from "@/components/team-switcher"
 import {
@@ -26,13 +22,14 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import LanguageTranslationComponent from "./language"
+import { ThemeSwitcher } from "./themeswitch"
 
 // This is sample data.
 const data = {
   user: {
     name: "shadcn",
     email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    avatar: "https://github.com/shadcn.png",
   },
   teams: [
     {
@@ -148,6 +145,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+      <ThemeSwitcher /> 
       </SidebarContent>
       <SidebarFooter>
       <LanguageTranslationComponent />

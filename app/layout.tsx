@@ -1,4 +1,3 @@
-import VoiceNavigationComponent from '@/components/voice'
 import {AIVoiceInput} from '@/components/ui/ai-voice-input'
 import {ExpandableChatDemo} from '@/components/sidechatbot'
 import './globals.css'
