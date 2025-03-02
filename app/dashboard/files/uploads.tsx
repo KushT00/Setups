@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @next/next/no-img-element */
@@ -11,6 +12,7 @@ import { toast } from "sonner";
 import { Dialog, DialogContent, DialogTitle, DialogHeader, DialogDescription, DialogClose } from "@/components/ui/dialog";
 import { formatDistanceToNow } from "date-fns";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes"; // Add this import for theme handling
 
 // Sample data for demonstration
 const sampleFiles: FileItem[] = [
@@ -83,6 +85,7 @@ const sampleFiles: FileItem[] = [
 ];
 
 const Index = () => {
+  const { theme } = useTheme(); // Add theme detection
   const [loading, setLoading] = useState(true);
   const [files, setFiles] = useState<FileItem[]>([]);
   const [filteredFiles, setFilteredFiles] = useState<FileItem[]>([]);
@@ -190,10 +193,9 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    // Use bg-background instead of hardcoded gradient to respect theme colors
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-5 sm:py-6 max-w-full">
-        
-
         <div className="space-y-6">
           {/* Search and Upload Row */}
           <div className="flex flex-col sm:flex-row gap-4">

@@ -14,7 +14,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
       <Input
         type="search"
         placeholder="Search files..."
-        className="pl-10 h-11 bg-white/80 backdrop-blur-sm border border-border/30 rounded-xl shadow-sm focus-visible:ring-1 w-full"
+        className="pl-10 h-11 bg-card/80 backdrop-blur-md border border-border rounded-xl shadow-sm focus:ring-primary/50 focus:ring-1 text-card-foreground w-full"
         onChange={(e) => onSearch(e.target.value)}
       />
     </div>

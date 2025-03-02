@@ -25,17 +25,17 @@ const FileCard = ({ file, onClick }: FileCardProps) => {
     if (type.includes("zip") || type.includes("rar")) return <FileArchive size={30} className="text-gray-500" />;
     if (type.includes("excel") || type.includes("sheet")) return <FileSpreadsheet size={30} className="text-emerald-500" />;
     if (type.includes("code") || type.includes("json") || type.includes("html")) return <FileCode size={30} className="text-indigo-500" />;
-    return <File size={30} className="text-neutral-500" />;
+    return <File size={30} className="text-muted-foreground" />;
   };
 
   return (
     <div 
       onClick={() => onClick(file)}
-      className="file-card group bg-white border border-border/30 p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer"
+      className="file-card group bg-card border border-border p-4 rounded-xl shadow-sm hover:shadow-md cursor-pointer"
     >
       <div className="flex flex-col items-center justify-center h-full">
         {file.preview ? (
-          <div className="relative w-full h-32 mb-3 overflow-hidden rounded-lg bg-secondary/50">
+          <div className="relative w-full h-32 mb-3 overflow-hidden rounded-lg bg-muted">
             <img 
               src={file.preview} 
               alt={file.name} 
@@ -43,13 +43,13 @@ const FileCard = ({ file, onClick }: FileCardProps) => {
             />
           </div>
         ) : (
-          <div className="flex items-center justify-center w-full h-32 mb-3 bg-secondary/30 rounded-lg">
+          <div className="flex items-center justify-center w-full h-32 mb-3 bg-muted rounded-lg">
             {getFileIcon()}
           </div>
         )}
         
         <div className="w-full space-y-1">
-          <h3 className="text-sm font-medium truncate">{file.name}</h3>
+          <h3 className="text-sm font-medium truncate text-card-foreground">{file.name}</h3>
           <div className="flex justify-between items-center text-xs text-muted-foreground">
             <span>{file.size}</span>
             <span>{file.modified}</span>

@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {  Filter, X } from "lucide-react";
+import { Filter, X } from "lucide-react";
 import { useState } from "react";
 
 export type FilterOptions = {
@@ -36,17 +36,17 @@ const FilterSection = ({ onFilter }: FilterSectionProps) => {
   ] as const;
 
   const toggleType = (type: string) => {
-    setFilters(prev => {
-      const newTypes = prev.type.includes(type) 
-        ? prev.type.filter(t => t !== type)
+    setFilters((prev) => {
+      const newTypes = prev.type.includes(type)
+        ? prev.type.filter((t) => t !== type)
         : [...prev.type, type];
-      
+
       return { ...prev, type: newTypes };
     });
   };
 
   const handleSortChange = (sortBy: "name" | "date" | "size") => {
-    setFilters(prev => ({ ...prev, sortBy }));
+    setFilters((prev) => ({ ...prev, sortBy }));
   };
 
   const applyFilters = () => {
@@ -68,7 +68,7 @@ const FilterSection = ({ onFilter }: FilterSectionProps) => {
       <Button
         variant="outline"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 h-8 px-3 bg-white/80 backdrop-blur-sm border border-border/30 rounded-lg"
+        className="flex items-center gap-2 h-8 px-3 bg-card/80 backdrop-blur-md border border-border/60 rounded-lg shadow-sm focus:ring-primary/50"
       >
         <Filter size={14} />
         <span>Filters</span>
@@ -80,7 +80,7 @@ const FilterSection = ({ onFilter }: FilterSectionProps) => {
       </Button>
 
       {isOpen && (
-        <div className="mt-2 p-4 bg-white/90 backdrop-blur-md border border-border/40 rounded-xl shadow-lg animate-fadeIn">
+        <div className="mt-2 p-4 bg-card/80 backdrop-blur-lg border border-border/60 rounded-xl shadow-lg transition-all duration-200 ease-in-out">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-sm font-medium">Filter Files</h3>
             <Button variant="ghost" size="sm" onClick={clearFilters} className="h-7 px-2">
@@ -96,7 +96,11 @@ const FilterSection = ({ onFilter }: FilterSectionProps) => {
                   <Badge
                     key={type.value}
                     variant={filters.type.includes(type.value) ? "default" : "outline"}
-                    className="cursor-pointer"
+                    className={`cursor-pointer transition-all ${
+                      filters.type.includes(type.value)
+                        ? "shadow-[0_0_8px_var(--tw-shadow-color)]"
+                        : ""
+                    }`}
                     onClick={() => toggleType(type.value)}
                   >
                     {type.label}
@@ -112,7 +116,11 @@ const FilterSection = ({ onFilter }: FilterSectionProps) => {
                   <Badge
                     key={option.value}
                     variant={filters.sortBy === option.value ? "default" : "outline"}
-                    className="cursor-pointer"
+                    className={`cursor-pointer transition-all ${
+                      filters.sortBy === option.value
+                        ? "shadow-[0_0_8px_var(--tw-shadow-color)]"
+                        : ""
+                    }`}
                     onClick={() => handleSortChange(option.value)}
                   >
                     {option.label}

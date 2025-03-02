@@ -30,10 +30,10 @@ const FileUpload = ({ onFileUpload }: FileUploadProps) => {
         multiple
         onChange={handleFileChange}
       />
-      <Button 
+      <Button
         onClick={handleClick}
         variant="outline"
-        className="h-11 px-4 bg-white/80 backdrop-blur-sm border border-border/30 rounded-xl hover:bg-secondary transition-colors duration-300 flex items-center gap-2 shadow-sm"
+        className="h-11 px-4 bg-card/80 backdrop-blur-lg border border-border/60 rounded-xl flex items-center gap-2 shadow-sm transition-all duration-200 ease-in-out hover:bg-primary/20 hover:shadow-[0_0_10px_var(--tw-shadow-color)]"
       >
         <Upload size={18} />
         <span>Upload</span>
