@@ -54,7 +54,7 @@ const FilterSection = ({ onFilter }: FilterSectionProps) => {
   };
 
   const clearFilters = () => {
-    const resetFilters = {
+    const resetFilters: FilterOptions = {
       type: [],
       date: null,
       sortBy: "date",
