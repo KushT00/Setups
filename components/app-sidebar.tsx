@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
@@ -9,28 +9,23 @@ import {
   GalleryVerticalEnd,
   Settings2,
   SquareTerminal,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
-import LanguageTranslationComponent from "./language"
-import { ThemeSwitcher } from "./themeswitch"
+} from "@/components/ui/sidebar";
+import LanguageTranslationComponent from "./language";
+import { ThemeSwitcher } from "./themeswitch";
+import { useUser } from "@/lib/UserContext"; // 🔥 import the hook
 
-// This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "https://github.com/shadcn.png",
-  },
   teams: [
     {
       name: "Acme Inc",
@@ -55,26 +50,11 @@ const data = {
       icon: SquareTerminal,
       isActive: true,
       items: [
-        {
-          title: "voice",
-          url: "voice",
-        },
-        {
-          title: "input",
-          url: "input",
-        },
-        {
-          title: "profile",
-          url: "profile",
-        },
-        {
-          title: "files",
-          url: "files",
-        },
-        {
-          title: "Feedback",
-          url: "feedback",
-        },
+        { title: "voice", url: "voice" },
+        { title: "input", url: "input" },
+        { title: "profile", url: "profile" },
+        { title: "files", url: "files" },
+        { title: "Feedback", url: "feedback" },
       ],
     },
     {
@@ -82,18 +62,9 @@ const data = {
       url: "",
       icon: Bot,
       items: [
-        {
-          title: "Madhav",
-          url: "/dashboard/madhav",
-        },
-        {
-          title: "meet",
-          url: "/dashboard/meet",
-        },
-        {
-          title: "kush",
-          url: "/dashboard/kush",
-        },
+        { title: "Madhav", url: "/dashboard/madhav" },
+        { title: "meet", url: "/dashboard/meet" },
+        { title: "kush", url: "/dashboard/kush" },
       ],
     },
     {
@@ -101,22 +72,10 @@ const data = {
       url: "#",
       icon: BookOpen,
       items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
+        { title: "Introduction", url: "#" },
+        { title: "Get Started", url: "#" },
+        { title: "Tutorials", url: "#" },
+        { title: "Changelog", url: "#" },
       ],
     },
     {
@@ -124,28 +83,19 @@ const data = {
       url: "#",
       icon: Settings2,
       items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
+        { title: "General", url: "#" },
+        { title: "Team", url: "#" },
+        { title: "Billing", url: "#" },
+        { title: "Limits", url: "#" },
       ],
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useUser(); // 🔥 get logged in user
+  console.log(user)
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -153,13 +103,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-      <ThemeSwitcher /> 
+        <ThemeSwitcher />
       </SidebarContent>
       <SidebarFooter>
-      <LanguageTranslationComponent />
-        <NavUser user={data.user} />
+        <LanguageTranslationComponent />
+        <NavUser
+          user={{
+            name: user?.user_metadata?.full_name || user?.email || "Guest",
+            email: user?.email || "",
+            avatar: user?.user_metadata.avatar_url,
+          }}
+        />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
