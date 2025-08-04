@@ -37,7 +37,7 @@ export function Conversation() {
     try {
       await navigator.mediaDevices.getUserMedia({ audio: true });
       await conversation.startSession({
-        agentId: 'v9y2YgI94Ohhke67c1tp',
+        agentId: 'rwYq3d2Qd3wOirs5rd9P',
       });
       // Clear previous messages when starting a new conversation
       setMessages([]);
