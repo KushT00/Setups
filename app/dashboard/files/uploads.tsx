@@ -228,7 +228,7 @@ const Index = () => {
       // Get the file data
       const { data, error } = await supabase.storage
         .from('general1')
-        .download(file.storagePath);
+        .download(file.storagePath as string);
 
       if (error) {
         console.error('Error downloading file:', error);
@@ -262,7 +262,7 @@ const Index = () => {
     // Get the public URL for the file
     const { data } = supabase.storage
       .from('general1')
-      .getPublicUrl(file.storagePath);
+      .getPublicUrl(file.storagePath as string);
 
     if (data.publicUrl) {
       // Open in new tab
