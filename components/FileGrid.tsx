@@ -4,6 +4,8 @@ interface FileGridProps {
   files: FileItem[];
   onFileClick: (file: FileItem) => void;
   isLoading?: boolean;
+  onDownload?: (file: FileItem) => void;  // Add this
+  onPreview?: (file: FileItem) => void;   // Add this
 }
 
 const FileGrid = ({ files, onFileClick, isLoading = false }: FileGridProps) => {
@@ -14,6 +16,7 @@ const FileGrid = ({ files, onFileClick, isLoading = false }: FileGridProps) => {
     type: "unknown",
     size: "--",
     modified: "--",
+    storagePath: "", // Added to satisfy FileItem interface
   }));
 
   const displayFiles = isLoading ? placeholders : files;

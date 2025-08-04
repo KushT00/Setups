@@ -2,6 +2,7 @@
 import { File, FileImage, FileText, FileAudio, FileVideo, FileArchive, FileSpreadsheet, FileCode } from "lucide-react";
 
 export interface FileItem {
+  storagePath: unknown;
   id: string;
   name: string;
   type: string;
