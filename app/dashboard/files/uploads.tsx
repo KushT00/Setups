@@ -262,7 +262,7 @@ const Index = () => {
     // Get the public URL for the file
     const { data } = supabase.storage
       .from('general1')
-      .getPublicUrl(file.storagePath as string);
+      .getPublicUrl(file.storagePath);
 
     if (data.publicUrl) {
       // Open in new tab
